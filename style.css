@@ -1,0 +1,226 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  transition: background 0.7s ease;
+}
+
+/* NIGHT MODE */
+body.night {
+  background: #050505;
+}
+
+/* LIGHT MODE */
+body.light {
+  background: #dffaff;
+}
+
+/* MAIN CONTAINER */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 74px;
+}
+
+/* 3D CIRCLES */
+.circles {
+  position: relative;
+  width: 310px;
+  height: 185px;
+  isolation: isolate;
+}
+
+.circle {
+  position: absolute;
+  top: 0;
+  width: 185px;
+  height: 185px;
+  border-radius: 50%;
+
+  transition:
+    transform 0.75s cubic-bezier(.2,.8,.2,1),
+    background 0.7s ease;
+}
+
+/* LEFT SPHERE */
+.circle-one {
+  left: 0;
+  z-index: 1;
+
+  background: radial-gradient(
+    circle at 38% 76%,
+    #f0ffff 0%,
+    #b7f4ff 40%,
+    #48d7f7 75%,
+    #00a9cc 100%
+  );
+}
+
+/* RIGHT SPHERE */
+.circle-two {
+  right: 0;
+  z-index: 2;
+
+  background: radial-gradient(
+    circle at 35% 75%,
+    #8deeff 0%,
+    #06a4c5 55%,
+    #003a48 100%
+  );
+}
+
+/* LIGHT MODE SPHERES */
+body.light .circle-one {
+  transform: translateX(125px);
+
+  background: radial-gradient(
+    circle at 40% 30%,
+    #edffff 0%,
+    #a9f1ff 60%,
+    #00b7dd 100%
+  );
+}
+
+body.light .circle-two {
+  transform: translateX(-125px);
+
+  background: radial-gradient(
+    circle at 70% 25%,
+    #9eebff 0%,
+    #0099b9 52%,
+    #003c49 100%
+  );
+}
+
+/* TOGGLE BUTTON */
+.theme-toggle {
+  position: relative;
+
+  width: 215px;
+  height: 61px;
+
+  border: none;
+  border-radius: 40px;
+
+  cursor: pointer;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-left: 36px;
+
+  background: linear-gradient(
+    135deg,
+    #0097b5,
+    #a4efff 75%,
+    #eaffff
+  );
+
+  box-shadow:
+    inset 0 3px 8px #ffffff70,
+    0 4px 15px #00000010;
+
+  color: #073542;
+  font-size: 17px;
+  font-weight: 700;
+
+  transition:
+    background 0.65s ease,
+    color 0.65s ease,
+    padding 0.65s ease;
+}
+
+/* HALF MOON - NIGHT MODE */
+.toggle-icon {
+  position: absolute;
+  left: 10px;
+  top: 8px;
+
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+
+  background: #003d4a;
+
+  /* Crescent shape */
+  -webkit-mask: radial-gradient(
+    circle at 75% 35%,
+    transparent 0 21px,
+    #000 22px
+  );
+
+  mask: radial-gradient(
+    circle at 75% 35%,
+    transparent 0 21px,
+    #000 22px
+  );
+
+  transition:
+    left 0.65s cubic-bezier(.2,.8,.2,1),
+    background 0.65s ease;
+}
+
+/* BUTTON TEXT */
+.toggle-text {
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* LIGHT MODE BUTTON */
+body.light .theme-toggle {
+  background: linear-gradient(
+    120deg,
+    #03a9c9,
+    #006176
+  );
+
+  color: #ffffff;
+  padding-left: 0;
+  padding-right: 35px;
+}
+
+/* LIGHT MODE FULL CIRCLE */
+body.light .toggle-icon {
+  left: 162px;
+
+  background: #e0faff;
+
+  -webkit-mask: none;
+  mask: none;
+
+  box-shadow: none;
+}
+
+/* FOCUS ACCESSIBILITY */
+.theme-toggle:focus-visible {
+  outline: 3px solid #24c7ed;
+  outline-offset: 5px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 380px) {
+  .container {
+    transform: scale(0.85);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

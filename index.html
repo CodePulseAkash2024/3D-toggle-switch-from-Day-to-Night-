@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Night & Light Mode Toggle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="night">
+
+  <main class="container">
+
+    <!-- 3D Gradient Circles -->
+    <div class="circles">
+      <div class="circle circle-one"></div>
+      <div class="circle circle-two"></div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button
+      class="theme-toggle"
+      id="themeToggle"
+      type="button"
+      aria-label="Switch to light mode"
+      aria-pressed="false"
+    >
+      <span class="toggle-icon"></span>
+      <span class="toggle-text" id="toggleText">
+        Night mode
+      </span>
+    </button>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
